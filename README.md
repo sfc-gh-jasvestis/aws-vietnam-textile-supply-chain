@@ -115,11 +115,10 @@ Run all scripts including AWS integration. Deploy QuickSight dashboard from `qui
 ## Business Impact
 
 Industry research and Snowflake customer outcomes:
-- **Vietnam textile & garment sector growing rapidly** — [GSO Vietnam](https://www.gso.gov.vn/)
-- **AI improves outcomes 15-30%** — [McKinsey](https://www.mckinsey.com/)
-- **Vietnam FDI strong in this sector** — [MPI](https://www.mpi.gov.vn/)
-- **Real-time analytics reduces response 60-80%** — [Gartner](https://www.gartner.com/)
-
+- **Vietnam imports 80% of fabric inputs ($15B annually), primarily from China, South Korea, and Taiwan** — [General Department of Customs Vietnam](https://www.customs.gov.vn/english)
+- **Supply chain disruptions cost the global apparel industry $100B in 2021-2023 — Vietnam was heavily impacted** — [McKinsey Fashion](https://www.mckinsey.com/industries/retail/our-insights/state-of-fashion-2024)
+- **Multi-tier supply chain visibility reduces risk of forced labor violations — critical for UFLPA compliance** — [US Customs and Border Protection](https://www.cbp.gov/trade/forced-labor/UFLPA)
+- **PVH Corp (Calvin Klein, Tommy Hilfiger) uses Snowflake for end-to-end supply chain analytics** — [Snowflake Customers](https://www.snowflake.com/en/customers/all-customers/pvh/)
 
 ## Key Demo Numbers
 
