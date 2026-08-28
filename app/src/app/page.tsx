@@ -134,10 +134,11 @@ export default function HomePage() {
           'Show fabric cost trend: domestic vs imported',
           'What is the optimal reorder point for top 20 fabrics?',
         ]}
-        onSubmit={async (question) => {
+        mode="both"
+        onSubmit={async (question, mode) => {
           return {
-            answer: `[Demo Mode] Response to: "${question}" Connect to Snowflake for live data.`,
-            sql: 'SELECT * FROM CURATED.SUMMARY LIMIT 10;',
+            answer: `[Demo Mode] Response to: "${question}" (${mode} mode). Connect to Snowflake for live data.`,
+            sql: mode === 'sql' ? 'SELECT * FROM CURATED.SUMMARY LIMIT 10;' : undefined,
           };
         }}
       />
