@@ -21,8 +21,8 @@ Snowflake delivers supply chain visibility intelligence for Vietnamese textile &
 | Database | `VIETNAM_TEXTILE_SUPPLY_CHAIN` |
 | Service | `VIETNAM_TEXTILE_SUPPLY_CHAIN_APP` |
 | Compute pool | `SEA_DEMOS_VIETNAM_POOL` |
-| Dimension table | `RAW.DOCUMENTS` (20 rows) |
-| Fact table | `RAW.METRICS` (250,000 rows, 90 days) |
+| Dimension table | `RAW.SUPPLIERS` (20 rows) |
+| Fact table | `RAW.FABRIC_SHIPMENTS` (250,000 rows, 90 days) |
 | Curated layer | `CURATED.PERFORMANCE_SUMMARY`, `CURATED.TREND_ANALYSIS`, `CURATED.KPI_SUMMARY` |
 | Currency | VND (₫) |
 
@@ -43,7 +43,7 @@ original literal as a fallback, so it still renders if Snowflake is unreachable.
 | Card | Value | Backed by |
 |---|---|---|
 | Fabric On-Time | `87%` | average per event |
-| Active Suppliers | `124` | total across Documents |
+| Active Suppliers | `124` | total across Suppliers |
 | Lead Time (Avg) | `28 days` | average per event |
 | Inventory Days | `18` | average per event |
 | Fabric Utilization | `92%` | average per event |
