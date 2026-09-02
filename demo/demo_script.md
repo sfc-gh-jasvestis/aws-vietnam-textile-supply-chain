@@ -1,105 +1,78 @@
-# Demo Script: Fabric Supply Chain
-## ~4-Minute Recorded Walkthrough
-**Format**: Screen recording with voiceover
-**Target**: Customer meeting / booth loop / social share
-**Narrative**: "Snowflake delivers supply chain visibility intelligence for Vietnamese textile & garment - Dynamic Tables maintain real-time dashboards, ML.FORECAST projects key metrics, and Cortex AI generates recommendations"
-**Demo Mode**: Open app with `?demo=true` for presenter notes
+# Fabric Supply Chain
 
----
+**Vietnam - Textile & Garment**
+Use case: Supply Chain Visibility
 
-## Two Personas
+> Fabric Supply Chain for Vietnam - ML.FORECAST and Dynamic Tables power real-time supply chain visibility intelligence for textile & garment in Ho Chi Minh City & Binh Duong.
 
-| Persona | Role | Tool | What they care about |
-|---|---|---|---|
-| **Tran Minh Duc** | VP Supply Chain | React App (SPCS) | Supply Chain Visibility strategy, KPI tracking, operational decisions |
-| **Le Thi Hoa** | Sourcing Manager | Amazon QuickSight | Supply Chain Visibility operations, analysis, reporting |
+## Why Snowflake
 
----
+Snowflake delivers supply chain visibility intelligence for Vietnamese textile & garment - Dynamic Tables maintain real-time dashboards, ML.FORECAST projects key metrics, and Cortex AI generates recommendations
 
-## What's Built
+- **ML.FORECAST for supply chain visibility** - Only demo for Vietnamese textile & garment
+- **ML.ANOMALY_DETECTION early warning** - Detects deviations before impact
+- **AI recommendations** - Cortex AI actionable guidance
+- **Vietnamese context** - Local names, VND economics
 
-| Layer | Component | Detail |
+## What is deployed
+
+| | |
+|---|---|
+| Database | `VIETNAM_TEXTILE_SUPPLY_CHAIN` |
+| Service | `VIETNAM_TEXTILE_SUPPLY_CHAIN_APP` |
+| Compute pool | `SEA_DEMOS_VIETNAM_POOL` |
+| Dimension table | `RAW.DOCUMENTS` (20 rows) |
+| Fact table | `RAW.METRICS` (250,000 rows, 90 days) |
+| Curated layer | `CURATED.PERFORMANCE_SUMMARY`, `CURATED.TREND_ANALYSIS`, `CURATED.KPI_SUMMARY` |
+| Currency | VND (₫) |
+
+Regions in play: Ho Chi Minh City, Hanoi, Binh Duong, Dong Nai, Can Tho
+Segments: Cotton Knit, Synthetic Woven, Denim, Technical Fabric
+
+Dynamic tables are created suspended and refreshed on demand:
+
+```bash
+./refresh_demo_data.sh VIETNAM_TEXTILE_SUPPLY_CHAIN
+```
+
+## KPI cards
+
+Every card below is served live from `CURATED.KPI_SUMMARY`. The app keeps the
+original literal as a fallback, so it still renders if Snowflake is unreachable.
+
+| Card | Value | Backed by |
 |---|---|---|
-| **RAW** | 5 tables | OPERATIONS (100000), METRICS (500000), ASSETS (5000), EVENTS (200000), DOCUMENTS (100) |
-| **CURATED** | 4 Dynamic Tables | PERFORMANCE_DASHBOARD, TREND_ANALYTICS, FORECAST_INPUT, OPERATIONAL_RISK |
-| **ML** | ML.FORECAST + ML.ANOMALY_DETECTION | Forecasting + anomaly detection |
-| **AI** | COMPLETE, SUMMARIZE, AI_CLASSIFY | Classification + extraction |
-| **Search** | Cortex Search | 100 documents indexed |
-| **Agent** | TEXTILE_SUPPLY_CHAIN_AGENT | Semantic View + Search tools |
+| Fabric On-Time | `87%` | average per event |
+| Active Suppliers | `124` | total across Documents |
+| Lead Time (Avg) | `28 days` | average per event |
+| Inventory Days | `18` | average per event |
+| Fabric Utilization | `92%` | average per event |
+| Trim Availability | `97%` | average per event |
+| Import Dependency | `64%` | average per event |
 
 
----
+## Demo flow
 
-## The Story
+1. Overview
+2. Analytics
+3. AI Intelligence
+4. Ask AI
+5. Architecture
 
-Vietnam textile & garment faces increasing complexity in supply chain visibility. Decision-makers in Ho Chi Minh City & Binh Duong need real-time intelligence and ML-powered recommendations.
+## Talking points
 
----
+- **100K operations** - tracked in Ho Chi Minh City & Binh Duong
+- **500K metrics** - time-series data points
+- **5K assets** - monitored
+- **100 docs** - searchable
 
-## Script
+## Business impact
 
-### [0:00–0:45] OVERVIEW
-
-**Show**: Overview tab
-
-> "Comprehensive supply chain visibility monitoring in Ho Chi Minh City & Binh Duong."
-
-**Action**: Primary KPI dashboard
-
-### [0:45–1:30] ANALYTICS
-
-**Show**: Analytics tab
-
-> "Detailed trend analysis across parameters."
-
-**Action**: Trend charts
-
-### [1:30–2:15] AI INTELLIGENCE
-
-**Show**: AI Intelligence tab
-
-> "Cortex AI generates actionable recommendations."
-
-**Action**: AI recommendations
-
-### [2:15–3:00] ASK AI
-
-**Show**: Ask AI tab
-
-> "Tran Minh Duc asks questions in natural language."
-
-**Action**: Type question
-
-### [3:00–3:45] ARCHITECTURE
-
-**Show**: Architecture tab
-
-> "Six Snowflake + six AWS services."
-
-**Action**: Architecture diagram
-
+- Vietnam textile & garment sector growing rapidly (GSO Vietnam)
+- AI improves outcomes 15-30% (McKinsey)
+- Vietnam FDI strong in this sector (MPI)
+- Real-time analytics reduces response 60-80% (Gartner)
 
 ---
-
-## Key Demo Differentiators
-
-1. **ML.FORECAST for supply chain visibility** — Only demo for Vietnamese textile & garment
-2. **ML.ANOMALY_DETECTION early warning** — Detects deviations before impact
-3. **AI recommendations** — Cortex AI actionable guidance
-4. **Vietnamese context** — Local names, VND economics
-
-
----
-
-## Demo Prep Checklist
-
-### Data Verification
-- [ ] `SELECT COUNT(*) FROM TEXTILE_SUPPLY_CHAIN.RAW.OPERATIONS` → 100000
-- [ ] `SELECT COUNT(*) FROM TEXTILE_SUPPLY_CHAIN.RAW.METRICS` → 500000
-
-### ML Model Verification
-- [ ] `SELECT COUNT(*) FROM TEXTILE_SUPPLY_CHAIN.ML.TEXTILE_SUPPLY_CHAIN_FORECAST_RESULTS` → >0
-
-### AI/Agent Verification
-- [ ] `SELECT COUNT(*) FROM TEXTILE_SUPPLY_CHAIN.AI.EVENT_CLASSIFICATION` → >0
-
+Generated from `generator/demo_specs/aws-vietnam-textile-supply-chain.json`. Do not hand-edit: run
+`python3 generator/gen_repo_docs.py aws-vietnam-textile-supply-chain` instead.
