@@ -32,15 +32,22 @@ export default function HomePage() {
       .catch(() => {});
   }, []);
 
+
+  // KPI values come from /api/data, which reads CURATED.KPI_SUMMARY. The literal
+  // stays as a fallback so the card still renders if the API is unavailable.
+  const kpiVal = (title: string, fallback: string): string =>
+    (data?.kpiCards as { title: string; value: string }[] | undefined)
+      ?.find((k) => k.title === title)?.value ?? fallback;
+
   const title = narrative?.title || 'SEA AWS Demo';
 
   const executiveCockpit = (
     <div className="space-y-6">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <KPICard title="Fabric On-Time" value="87%" status="warning" />
-        <KPICard title="Active Suppliers" value="124" status="neutral" />
-        <KPICard title="Lead Time (Avg)" value="28 days" status="neutral" />
-        <KPICard title="Inventory Days" value="18" status="neutral" />
+        <KPICard title="Fabric On-Time" value={kpiVal('Fabric On-Time', '87%')} status="warning" />
+        <KPICard title="Active Suppliers" value={kpiVal('Active Suppliers', '124')} status="neutral" />
+        <KPICard title="Lead Time (Avg)" value={kpiVal('Lead Time (Avg)', '28 days')} status="neutral" />
+        <KPICard title="Inventory Days" value={kpiVal('Inventory Days', '18')} status="neutral" />
       </div>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <div className="lg:col-span-1">
@@ -87,9 +94,9 @@ export default function HomePage() {
   const domainTab1 = (
     <div className="space-y-6">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <KPICard title="Fabric Utilization" value="92%" />
-        <KPICard title="Trim Availability" value="97%" />
-        <KPICard title="Import Dependency" value="64%" />
+        <KPICard title="Fabric Utilization" value={kpiVal('Fabric Utilization', '92%')} />
+        <KPICard title="Trim Availability" value={kpiVal('Trim Availability', '97%')} />
+        <KPICard title="Import Dependency" value={kpiVal('Import Dependency', '64%')} />
       </div>
       <Chart
         data={data?.detail || [{ x: 'Mon', y: 24 }, { x: 'Tue', y: 28 }, { x: 'Wed', y: 22 }, { x: 'Thu', y: 31 }, { x: 'Fri', y: 26 }, { x: 'Sat', y: 19 }, { x: 'Sun', y: 23 }]}
