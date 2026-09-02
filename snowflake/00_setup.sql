@@ -1,16 +1,13 @@
--- ============================================================================
--- Fabric Supply Chain
--- Fabric Supply Chain for Vietnam - ML.FORECAST and Dynamic Tables power real-time supply chain visibility intelligence for textile & garment in Ho Chi Minh City & Binh Duong.
--- ============================================================================
-USE ROLE ACCOUNTADMIN;
-CREATE DATABASE IF NOT EXISTS TEXTILE_SUPPLY_CHAIN;
-CREATE WAREHOUSE IF NOT EXISTS TEXTILE_WH WAREHOUSE_SIZE = 'MEDIUM' AUTO_SUSPEND = 120 AUTO_RESUME = TRUE;
-USE DATABASE TEXTILE_SUPPLY_CHAIN;
-CREATE SCHEMA IF NOT EXISTS RAW;
-CREATE SCHEMA IF NOT EXISTS CURATED;
-CREATE SCHEMA IF NOT EXISTS ML;
-CREATE SCHEMA IF NOT EXISTS AI;
-CREATE SCHEMA IF NOT EXISTS SEARCH;
-CREATE SCHEMA IF NOT EXISTS APP;
+-- Generated from generator/demo_specs/aws-vietnam-textile-supply-chain.json
+-- Regenerate with: python3 generator/gen_repo_docs.py aws-vietnam-textile-supply-chain
+-- This is the schema that is actually deployed for VIETNAM_TEXTILE_SUPPLY_CHAIN.
 
-USE WAREHOUSE TEXTILE_WH;
+-- VIETNAM_TEXTILE_SUPPLY_CHAIN  (Fabric Supply Chain)
+-- generated from generator/demo_specs/aws-vietnam-textile-supply-chain.json - do not hand-edit
+CREATE DATABASE IF NOT EXISTS VIETNAM_TEXTILE_SUPPLY_CHAIN;
+CREATE SCHEMA IF NOT EXISTS VIETNAM_TEXTILE_SUPPLY_CHAIN.RAW;
+CREATE SCHEMA IF NOT EXISTS VIETNAM_TEXTILE_SUPPLY_CHAIN.CURATED;
+CREATE SCHEMA IF NOT EXISTS VIETNAM_TEXTILE_SUPPLY_CHAIN.APP;
+USE DATABASE VIETNAM_TEXTILE_SUPPLY_CHAIN;
+
+-- 5 real regions; entity names carry their region so the two always agree
