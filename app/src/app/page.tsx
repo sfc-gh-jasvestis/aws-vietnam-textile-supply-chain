@@ -53,6 +53,7 @@ export default function HomePage() {
         <div className="lg:col-span-1">
           <GeoMap
             country="vietnam"
+            labels={{ entity: 'Suppliers', event: 'Fabric Shipments', alert: 'Delays' }}
             regions={data?.regions}
             markers={[{"label": "Ho Chi Minh City", "value": "HQ + export", "color": "blue", "size": "lg"}, {"label": "Binh Duong", "value": "Factory cluster", "color": "green", "size": "lg"}, {"label": "Long An", "value": "Dyeing & finishing", "color": "amber", "size": "md"}, {"label": "Hanoi", "value": "Northern factories", "color": "green", "size": "md"}, {"label": "Da Nang", "value": "Central hub", "color": "green", "size": "sm"}]}
             routes={[{"from": "Binh Duong", "to": "Ho Chi Minh City", "color": "#29B5E8"}]}
@@ -83,8 +84,13 @@ export default function HomePage() {
         columns={[
           { key: 'id', header: 'Rank' },
           { key: 'name', header: 'Supplier' },
+          { key: 'region', header: 'Region' },
           { key: 'status', header: 'Status' },
-          { key: 'value', header: 'OTD %' },
+          { key: 'm1', header: 'OTD %' },
+          { key: 'm2', header: 'Lead Time' },
+          { key: 'm3', header: 'Inventory Days' },
+          { key: 'events', header: 'Fabric Shipments' },
+          { key: 'alerts', header: 'Delays' },
         ]}
         data={data?.entities || []}
         title="Supplier Performance"
